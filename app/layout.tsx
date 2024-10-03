@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Isisele",
-  description: "Sn offline first education platform for farmers.",
+  description: "An offline first education platform for farmers.",
   manifest: "/manifest.json",
   themeColor: "#000000",
   viewport: "width=device-width, initial-scale=1",
