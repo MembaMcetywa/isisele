@@ -1,7 +1,8 @@
 import { Paper, Stack, Title } from "@mantine/core";
+
 import { ReactNode } from "react";
 
-export default function AuthLayout({
+export default async function AuthLayout({
 	children,
 }: Readonly<{
 	children: ReactNode;
