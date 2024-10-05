@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { z, ZodError } from "zod";
 
@@ -22,23 +23,22 @@ type FormInput = {
 	confirmPassword: string;
 };
 
-const loginSchema = z
-	.object({
-		firstName: z.string(),
-		lastName: z.string(),
-		email: z.string().email(),
-		password: z.string().min(6),
-		confirmPassword: z.string(),
-	})
-	.refine(
-		() => (values: FormInput) => {
-			return values.password === values.confirmPassword;
-		},
-		{
-			message: "Passwords must match!",
-			path: ["confirmPassword"],
-		}
-	);
+const registerSchema = z.object({
+	firstname: z.string(),
+	lastname: z.string(),
+	email: z.string().email(),
+	password: z.string().min(6),
+	confirmPassword: z.string(),
+});
+// .refine(
+// 	() => (values: FormInput) => {
+// 		return values.password === values.confirmPassword;
+// 	},
+// 	{
+// 		message: "Passwords must match!",
+// 		path: ["confirmPassword"],
+// 	}
+// );
 
 export default function RegisterForm() {
 	const [formError, setFormError] = useState("");
@@ -46,6 +46,8 @@ export default function RegisterForm() {
 
 	const [loading, { open: startLoader, close: stopLoader }] =
 		useDisclosure(false);
+
+	const router = useRouter();
 
 	const submitRegister = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -57,23 +59,26 @@ export default function RegisterForm() {
 		const values = Object.fromEntries(formData.entries()) as FormInput;
 
 		try {
-			const { email, password, firstName, lastName } =
-				loginSchema.parse(values);
+			const { email, password, firstname, lastname } =
+				registerSchema.parse(values);
+			console.log(values);
 
 			const { error } = await supabaseClient.auth.signUp({
 				email,
 				password,
 				options: {
 					data: {
-						firstName,
-						lastName,
+						firstname,
+						lastname,
 					},
 				},
 			});
 
 			if (error) {
-				throw error;
+				throw error.message;
 			}
+
+			router.push("/dashboard");
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			if (error?.errors?.length) {
@@ -112,14 +117,14 @@ export default function RegisterForm() {
 			<Stack>
 				<TextInput
 					label="First Name"
-					name="firstName"
-					error={errors?.firstName}
+					name="firstname"
+					error={errors?.firstname}
 					onChange={valueOnChange}
 				/>
 				<TextInput
 					label="Last Name"
-					name="lastName"
-					error={errors?.lastName}
+					name="lastname"
+					error={errors?.lastname}
 					onChange={valueOnChange}
 				/>
 				<TextInput

@@ -1,5 +1,4 @@
 "use client";
-import { supabaseClient } from "@/app/helpers/supabase/client";
 import {
 	Button,
 	Flex,
@@ -10,8 +9,11 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { z, ZodError } from "zod";
+
+import { supabaseClient } from "@/app/helpers/supabase/client";
 
 type FormInput = {
 	email: string;
@@ -29,6 +31,8 @@ export default function LoginForm() {
 
 	const [loading, { open: startLoader, close: stopLoader }] =
 		useDisclosure(false);
+
+	const router = useRouter();
 
 	const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -48,6 +52,8 @@ export default function LoginForm() {
 			if (error) {
 				throw error.message;
 			}
+
+			router.push("/dashboard");
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			if (error?.errors?.length) {
