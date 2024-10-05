@@ -8,17 +8,15 @@ export default async function AuthLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html>
-			<body>
-				<Stack className="w-full h-screen items-center justify-center">
-					<Paper bg="#fff" shadow="sm" m="auto" p="sm" className=" w-2/6">
-						<Title order={2} className="text-center">
-							Isisele
-						</Title>
-						{children}
-					</Paper>
-				</Stack>
-			</body>
-		</html>
+		<div>
+			<Stack className="w-full h-screen items-center justify-center">
+				<Paper bg="#fff" shadow="sm" m="auto" p="sm" className=" w-2/6">
+					<Title order={2} className="text-center">
+						Isisele
+					</Title>
+					{children}
+				</Paper>
+			</Stack>
+		</div>
 	);
 }
