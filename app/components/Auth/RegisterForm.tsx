@@ -1,6 +1,4 @@
 "use client";
-
-import { supabaseClient } from "@/app/helpers/supabase/client";
 import {
 	Button,
 	Flex,
@@ -15,6 +13,8 @@ import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { z, ZodError } from "zod";
 
+import { supabaseClient } from "@/app/helpers/supabase/client";
+
 type FormInput = {
 	firstName: string;
 	lastName: string;
@@ -23,22 +23,23 @@ type FormInput = {
 	confirmPassword: string;
 };
 
-const registerSchema = z.object({
-	firstname: z.string(),
-	lastname: z.string(),
-	email: z.string().email(),
-	password: z.string().min(6),
-	confirmPassword: z.string(),
-});
-// .refine(
-// 	() => (values: FormInput) => {
-// 		return values.password === values.confirmPassword;
-// 	},
-// 	{
-// 		message: "Passwords must match!",
-// 		path: ["confirmPassword"],
-// 	}
-// );
+const registerSchema = z
+	.object({
+		firstname: z.string(),
+		lastname: z.string(),
+		email: z.string().email(),
+		password: z.string().min(6),
+		confirmPassword: z.string(),
+	})
+	.refine(
+		() => (values: FormInput) => {
+			return values.password === values.confirmPassword;
+		},
+		{
+			message: "Passwords must match!",
+			path: ["confirmPassword"],
+		}
+	);
 
 export default function RegisterForm() {
 	const [formError, setFormError] = useState("");
