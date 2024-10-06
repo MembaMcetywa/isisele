@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 	description: "An offline first education platform for farmers.",
 	manifest: "/manifest.json",
 };
-
+//
 export default function RootLayout({
 	children,
 }: Readonly<{
