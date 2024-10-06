@@ -17,6 +17,8 @@ export async function presignedUrl(key: string) {
 	});
 	try {
 		return await getSignedUrl(s3, command);
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch (error: any) {
 		console.error(error.message);
 
