@@ -6,7 +6,7 @@ export const theme = createTheme({
 	components: {
 		TextInput: {
 			defaultProps: {
-				radius: "xl",
+			
 			},
 		},
 		NumberInput: {
@@ -21,7 +21,7 @@ export const theme = createTheme({
 		},
 		Button: {
 			defaultProps: {
-				radius: "xl",
+				
 			},
 		},
 	},
