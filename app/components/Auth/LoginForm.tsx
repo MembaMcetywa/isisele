@@ -104,13 +104,12 @@ export default function LoginForm() {
         <Button type="submit" loading={loading}>
           Continue
         </Button>
-        <Flex className="w-full justify-center">
+        <Flex className="w-full justify-center text-[14px]">
           <Text>
             Don&apos;t have an account?{" "}
             <Link href="/register" className="text-blue-500 hover:underline">
               Register
             </Link>
-            .
           </Text>
         </Flex>
       </Stack>
