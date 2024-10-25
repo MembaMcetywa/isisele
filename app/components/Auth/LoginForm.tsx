@@ -82,38 +82,37 @@ export default function LoginForm() {
 	};
 
 	return (
-		<form onSubmit={submitLogin} className="bg-white">
-			{formError && (
-				<Text c="red" className="text-red-500 text-center">
-					{formError}!
-				</Text>
-			)}
-			<Stack>
-				<TextInput
-					label="E-mail"
-					name="email"
-					error={errors?.email}
-					onChange={valueOnChange}
-				/>
-				<PasswordInput
-					label="Password"
-					name="password"
-					error={errors?.password}
-					onChange={valueOnChange}
-				/>
-				<Flex className="w-full justify-end">
-					<Text>
-						Don&apos;t have an account?{" "}
-						<Link href="/register" className="text-blue-500 hover:underline">
-							Register
-						</Link>
-						.
-					</Text>
-				</Flex>
-				<Button type="submit" loading={loading}>
-					Login
-				</Button>
-			</Stack>
-		</form>
-	);
+    <form onSubmit={submitLogin} className="bg-white">
+      {formError && (
+        <Text c="red" className="text-red-500 text-center">
+          {formError}!
+        </Text>
+      )}
+      <Stack>
+        <TextInput
+          label="E-mail"
+          name="email"
+          error={errors?.email}
+          onChange={valueOnChange}
+        />
+        <PasswordInput
+          label="Password"
+          name="password"
+          error={errors?.password}
+          onChange={valueOnChange}
+        />
+        <Button type="submit" loading={loading}>
+          Continue
+        </Button>
+        <Flex className="w-full justify-center text-[14px]">
+          <Text>
+            Don&apos;t have an account?{" "}
+            <Link href="/register" className="text-blue-500 hover:underline">
+              Register
+            </Link>
+          </Text>
+        </Flex>
+      </Stack>
+    </form>
+  );
 }

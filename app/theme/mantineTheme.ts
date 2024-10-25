@@ -6,22 +6,22 @@ export const theme = createTheme({
 	components: {
 		TextInput: {
 			defaultProps: {
-				radius: "xl",
+			
 			},
 		},
 		NumberInput: {
 			defaultProps: {
-				radius: "xl",
+		
 			},
 		},
 		PasswordInput: {
 			defaultProps: {
-				radius: "xl",
+			
 			},
 		},
 		Button: {
 			defaultProps: {
-				radius: "xl",
+				
 			},
 		},
 	},

@@ -109,56 +109,55 @@ export default function RegisterForm() {
 	};
 
 	return (
-		<form onSubmit={submitRegister} className="bg-white">
-			{formError && (
-				<Text c="red" className="text-red-500 text-center">
-					{formError}!
-				</Text>
-			)}
-			<Stack>
-				<TextInput
-					label="First Name"
-					name="firstname"
-					error={errors?.firstname}
-					onChange={valueOnChange}
-				/>
-				<TextInput
-					label="Last Name"
-					name="lastname"
-					error={errors?.lastname}
-					onChange={valueOnChange}
-				/>
-				<TextInput
-					label="E-mail"
-					name="email"
-					error={errors?.email}
-					onChange={valueOnChange}
-				/>
-				<PasswordInput
-					label="Password"
-					name="password"
-					error={errors?.password}
-					onChange={valueOnChange}
-				/>
-				<PasswordInput
-					label="Confirm Password"
-					name="confirmPassword"
-					error={errors?.confirmPassword}
-					onChange={valueOnChange}
-				/>
-				<Flex className="w-full justify-end">
-					<Text>
-						Already have an account?{" "}
-						<Link href="/login" className="text-blue-500 hover:underline">
-							Login
-						</Link>
-						.
-					</Text>
-				</Flex>
-				<Button type="submit" loading={loading}>
-					Register
-				</Button>
-			</Stack>
-		</form>
-	);
+    <form onSubmit={submitRegister} className="bg-transparent">
+      {formError && (
+        <Text c="red" className="text-red-500 text-center">
+          {formError}!
+        </Text>
+      )}
+      <Stack>
+        <TextInput
+          label="First Name"
+          name="firstname"
+          error={errors?.firstname}
+          onChange={valueOnChange}
+        />
+        <TextInput
+          label="Last Name"
+          name="lastname"
+          error={errors?.lastname}
+          onChange={valueOnChange}
+        />
+        <TextInput
+          label="E-mail"
+          name="email"
+          error={errors?.email}
+          onChange={valueOnChange}
+        />
+        <PasswordInput
+          label="Password"
+          name="password"
+          error={errors?.password}
+          onChange={valueOnChange}
+        />
+        <PasswordInput
+          label="Confirm Password"
+          name="confirmPassword"
+          error={errors?.confirmPassword}
+          onChange={valueOnChange}
+        />
+        <Button type="submit" loading={loading}>
+          Register
+        </Button>
+        <Flex className="w-full justify-center text-[14px]">
+          <Text>
+            Already have an account?{" "}
+            <Link href="/login" className="text-blue-500 hover:underline ">
+              Login
+            </Link>
+          </Text>
+        </Flex>
+      </Stack>
+    </form>
+  );
 }
