@@ -11,12 +11,12 @@ export const theme = createTheme({
 		},
 		NumberInput: {
 			defaultProps: {
-				radius: "xl",
+		
 			},
 		},
 		PasswordInput: {
 			defaultProps: {
-				radius: "xl",
+			
 			},
 		},
 		Button: {
