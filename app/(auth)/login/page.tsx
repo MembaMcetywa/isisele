@@ -1,6 +1,6 @@
-import { Button, PasswordInput, Stack, TextInput } from "@mantine/core";
+import { Stack } from "@mantine/core";
 
-import LoginForm from "@/components/Auth/LoginForm";
+import LoginForm from "@/app/components/Auth/LoginForm";
 
 export default function Login() {
 	return (

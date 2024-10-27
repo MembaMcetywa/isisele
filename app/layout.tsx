@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import { MantineProvider } from "@mantine/core";
-import { theme } from "@/theme/mantineTheme";
+
+import "./globals.css";
+import { theme } from "@/app/theme/mantineTheme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description: "An offline first education platform for farmers.",
   manifest: "/manifest.json",
 };
-
+//
 export default function RootLayout({
   children,
 }: {

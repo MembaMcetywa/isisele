@@ -1,8 +1,7 @@
-`use client`;
-import RegisterForm from "@/components/Auth/RegisterForm";
-import { Button, PasswordInput, Stack, TextInput, Title } from "@mantine/core";
-import { isEmail, isNotEmpty, useForm } from "@mantine/form";
 import React from "react";
+import { Stack } from "@mantine/core";
+
+import RegisterForm from "@/app/components/Auth/RegisterForm";
 
 export default function Register() {
 	return (
